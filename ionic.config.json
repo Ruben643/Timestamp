@@ -1,0 +1,7 @@
+{
+  "name": "timestamper",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

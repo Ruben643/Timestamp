@@ -1,0 +1,42 @@
+<!-- home.page.html -->
+<ion-content class="ion-padding">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12" size-md="8" offset-md="2" class="ion-text-center">
+        <ion-item>
+          <ion-label position="floating">Enter ID</ion-label>
+          <ion-input [(ngModel)]="userId" type="text"></ion-input>
+        </ion-item>
+
+        <ion-button expand="full" fill="solid" color="success" (click)="sendDateTime()">Send Date and Time</ion-button>
+
+        <ion-button expand="full" fill="outline" color="danger" (click)="clearList()">Clear List</ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="entries.length > 0">
+      <ion-col size="12">
+        <ion-list lines="full" class="entry-list">
+          <ion-item-divider color="primary">
+            <ion-label class="ion-text-uppercase ion-text-bold">Entries</ion-label>
+          </ion-item-divider>
+
+          <ion-item *ngFor="let entry of entries" class="entry-item">
+            <ion-label>ID:</ion-label>
+            <ion-text class="ion-text-bold">{{ entry.userId }}</ion-text>
+
+            <ion-label class="ion-padding-start">Recorded Date and Time:</ion-label>
+            <ion-datetime display-format="MMM DD, YYYY HH:mm" value="{{ entry.recordedDateTime }}" readonly></ion-datetime>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12" size-md="8" offset-md="2">
+        <ion-text *ngIf="postSuccessMessage !== ''" color="success" class="ion-text-center">{{ postSuccessMessage }}</ion-text>
+        <ion-text *ngIf="postErrorMessage !== ''" color="danger" class="ion-text-center">{{ postErrorMessage }}</ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
